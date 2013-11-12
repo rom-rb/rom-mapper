@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rom-mapper', path: '.'
+gem 'ducktrap', git: 'http://github.com/mbj/ducktrap.git'
 
 group :test do
   gem 'bogus', '~> 0.1'
