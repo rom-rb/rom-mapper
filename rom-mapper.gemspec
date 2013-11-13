@@ -6,8 +6,8 @@ Gem::Specification.new do |gem|
   gem.name          = "rom-mapper"
   gem.description   = "rom-mapper"
   gem.summary       = gem.description
-  gem.authors       = %[Piotr Solnica Martin Gamsjaeger]
-  gem.email         = %[piotr.solnica@gmail.com, gamsnjaga@gmail.com]
+  gem.authors       = ['Piotr Solnica', 'Martin Gamsjaeger']
+  gem.email         = ['piotr.solnica@gmail.com', 'gamsnjaga@gmail.com']
   gem.homepage      = 'http://rom-rb.org'
   gem.require_paths = [ 'lib' ]
   gem.version       = ROM::Mapper::VERSION.dup
