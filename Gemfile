@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rom-mapper', path: '.'
+
+gem 'anima',    git: 'http://github.com/mbj/anima.git'
 gem 'ducktrap', git: 'http://github.com/mbj/ducktrap.git'
 
 group :test do

@@ -22,15 +22,50 @@ See ROM's [README](https://github.com/rom-rb/rom) for more information.
 require 'rom-mapper'
 
 class Address
-  include Anima.new(:id, :city, :zip)
+
+  include Equalizer.new(:id, :city, :zip)
+
+  attr_reader :id, :city, :zip
+
+  def initialize(attributes)
+    @id, @city, @zip = attributes.values_at(:id, :city, :zip)
+  end
+
+  def to_h
+    { id: @id, city: @city, zip: @zip }
+  end
 end
 
 class Task
-  include Anima.new(:id, :name)
+
+  include Equalizer.new(:id, :name)
+
+  attr_reader :id, :name
+
+  def initialize(attributes)
+    @id, @name = attributes.values_at(:id, :name)
+  end
+
+  def to_h
+    { id: @id, name: @name }
+  end
 end
 
 class Person
-  include Anima.new(:id, :name, :address, :tasks)
+
+  include Equalizer.new(:id, :name, :address, :tasks)
+
+  attr_reader :id, :name, :address, :tasks
+
+  def initialize(attributes)
+    @id, @name, @address, @tasks = attributes.values_at(
+      :id, :name, :address, :tasks
+    )
+  end
+
+  def to_h
+    { id: @id, name: @name, address: @address, tasks: @tasks }
+  end
 end
 
 mappings = ROM::Mapper::Mapping::Registry.new
