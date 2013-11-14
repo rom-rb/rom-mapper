@@ -21,11 +21,19 @@ See ROM's [README](https://github.com/rom-rb/rom) for more information.
 ```ruby
 require 'rom-mapper'
 
+# Only used for demonstrating behavior more
+# succinctly in the examples further below.
+#
+# rom-mapper doesn't need the #== to be implemented
+# in any particular way
+module Equality
+  def ==(other)
+    to_h == other.to_h
+  end
+end
+
 class Address
-
-  include Equalizer.new(:id, :city, :zip)
-
-  attr_reader :id, :city, :zip
+  include Equality
 
   def initialize(attributes)
     @id, @city, @zip = attributes.values_at(:id, :city, :zip)
@@ -37,10 +45,7 @@ class Address
 end
 
 class Task
-
-  include Equalizer.new(:id, :name)
-
-  attr_reader :id, :name
+  include Equality
 
   def initialize(attributes)
     @id, @name = attributes.values_at(:id, :name)
@@ -52,10 +57,7 @@ class Task
 end
 
 class Person
-
-  include Equalizer.new(:id, :name, :address, :tasks)
-
-  attr_reader :id, :name, :address, :tasks
+  include Equality
 
   def initialize(attributes)
     @id, @name, @address, @tasks = attributes.values_at(
@@ -99,11 +101,11 @@ address = Address.new(address_hash)
 task    = Task.new(task_hash)
 person  = Person.new(id: 1, name: 'John', address: address, tasks: [task])
 
-mappers[Address].load(address_hash).eql?(address) # => true
-mappers[Address].dump(address).eql?(address_hash) # => true
+mappers[Address].load(address_hash) == address # => true
+mappers[Address].dump(address) == address_hash # => true
 
-mappers[Person].load(person_hash).eql?(person) # => true
-mappers[Person].dump(person).eql?(person_hash) # => true
+mappers[Person].load(person_hash) == person # => true
+mappers[Person].dump(person) == person_hash # => true
 ```
 ## License
 
