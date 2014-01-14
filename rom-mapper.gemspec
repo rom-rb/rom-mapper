@@ -16,6 +16,6 @@ Gem::Specification.new do |gem|
   gem.license       = 'MIT'
 
   gem.add_dependency 'concord',  '~> 0.1.4'
-  gem.add_dependency 'anima',    '~> 0.1.1'
+  gem.add_dependency 'anima',    '~> 0.2.0'
   gem.add_dependency 'ducktrap', '~> 0.0.2'
 end
