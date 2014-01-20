@@ -11,10 +11,11 @@ gem 'ducktrap',   '~> 0.0.2', git: 'http://github.com/mbj/ducktrap.git',      br
 
 group :test do
   gem 'bogus', '~> 0.1'
+  gem 'rubysl-bigdecimal', :platforms => :rbx
 end
 
 group :development do
-  gem 'devtools', git: 'https://github.com/rom-rb/devtools.git'
+  gem 'devtools', git: 'https://github.com/rom-rb/devtools.git', branch: 'master'
 end
 
 # Added by devtools
