@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'anima',      '~> 0.2',   git: 'http://github.com/mbj/anima.git',         branch: 'master'
+gem 'ducktrap',   '~> 0.0.2', git: 'http://github.com/mbj/ducktrap.git',      branch: 'master'
+
 group :test do
   gem 'bogus', '~> 0.1'
   gem 'rubysl-bigdecimal', :platforms => :rbx

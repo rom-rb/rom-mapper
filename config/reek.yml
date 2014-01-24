@@ -1,6 +1,6 @@
 ---
 Attribute:
-  enabled: true
+  enabled: false
   exclude: []
 BooleanParameter:
   enabled: true
@@ -13,23 +13,22 @@ ControlParameter:
   exclude: []
 DataClump:
   enabled: true
-  exclude: []
+  exclude:
+  - ROM::Mapper::Mapping # DSL method parameters
   max_copies: 2
   min_clump_size: 2
 DuplicateMethodCall:
   enabled: false
 FeatureEnvy:
   enabled: true
-  exclude:
-    - ROM::Mapper::Loader::Allocator#call
-    - ROM::Mapper::Loader::AttributeWriter#call
+  exclude: []
 IrresponsibleModule:
   enabled: true
   exclude: []
 LongParameterList:
   enabled: true
   exclude:
-    - ROM::Mapper#self.build
+  - ROM::Mapper::Mapping#add # 3
   max_params: 2
 LongYieldList:
   enabled: true
@@ -39,8 +38,7 @@ NestedIterators:
   enabled: true
   max_allowed_nesting: 1
   ignore_iterators: []
-  exclude:
-    - ROM::Mapper::Header#keys
+  exclude: []
 NilCheck:
   enabled: true
   exclude: []
@@ -60,8 +58,6 @@ TooManyStatements:
   enabled: true
   exclude:
   - each
-  - ROM::Mapper#self.build
-  - ROM::Mapper::Header#self.build
   max_statements: 4
 UncommunicativeMethodName:
   enabled: true
@@ -99,5 +95,7 @@ UnusedParameters:
   exclude: []
 UtilityFunction:
   enabled: true
-  exclude: []
+  exclude:
+  - ROM::Mapper::Builder::Attribute#block
+  - ROM::Mapper::Builder::Attribute::Simple::Untyped#type_transformer
   max_helper_calls: 0
