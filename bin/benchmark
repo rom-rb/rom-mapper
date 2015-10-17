@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+BENCHMARK_DIR = File.expand_path('../../benchmarks',  __FILE__)
+RESULTS_DIR = File.expand_path('../../benchmarks/results',  __FILE__)
+BENCHMARKS = Dir[File.join(BENCHMARK_DIR, '*')].select {|f| File.file?(f) }.sort
+RESULTS = BENCHMARKS.map { |bm| File.join(RESULTS_DIR, File.basename(bm)) }
+
+BENCHMARKS.zip(RESULTS).each do |benchmark, result|
+  system("#{benchmark} | tee #{result}")
+end

@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require_relative 'utils/setup.rb'
+
+mapper = build_mapper do
+  reject_keys true
+  attribute :name
+  attribute :email
+end
+
+tuples = create_tuple_collection(100) do
+  {
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    Faker::Lorem.word => Faker::Lorem.word
+  }
+end
+
+run('reject_keys') do |x|
+  x.report { mapper.call(tuples) }
+end
