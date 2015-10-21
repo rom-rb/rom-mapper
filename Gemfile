@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'transproc', git: 'git@github.com:solnic/transproc.git', branch: 'feature/bind'
+
 group :test do
   gem 'anima', '~> 0.2.0'
   gem 'virtus'

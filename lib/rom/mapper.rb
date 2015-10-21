@@ -18,6 +18,8 @@ module ROM
     reject_keys false
     prefix_separator '_'.freeze
 
+    class << self; alias_method :build, :new; end
+
     # @return [Object] transformers object built by a processor
     #
     # @api private
@@ -50,21 +52,10 @@ module ROM
     # @return [Array<Header>]
     #
     # @api private
-    def self.headers(header)
+    def self.headers
       return [header] if steps.empty?
       return steps.map(&:header) if attributes.empty?
       raise(MapperMisconfiguredError, "cannot mix outer attributes and steps")
-    end
-
-    # Build a mapper using provided processor type
-    #
-    # @return [Mapper]
-    #
-    # @api private
-    def self.build(header = self.header, processor = :transproc)
-      processor = Mapper.processors.fetch(processor)
-      transformers = headers(header).map(&processor.method(:build))
-      new(transformers, header)
     end
 
     # @api private
@@ -76,9 +67,10 @@ module ROM
     end
 
     # @api private
-    def initialize(transformers, header)
-      @transformers = Array(transformers)
-      @header = header
+    def initialize(processor: :transproc)
+      processor = Mapper.processors.fetch(processor)
+      @transformers = self.class.headers.map { |header| processor.build(self, header) }
+      @header = self.class.header
     end
 
     # @return [Class] optional model that is instantiated by a mapper
