@@ -1,7 +1,7 @@
 require 'dry/core/class_builder'
 
 module ROM
-  module Mapper
+  class Mapper
     # Setup DSL-specific mapper extensions
     #
     # @private

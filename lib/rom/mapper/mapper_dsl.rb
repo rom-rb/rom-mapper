@@ -1,12 +1,12 @@
-require 'rom/configuration_dsl/mapper_builder'
+require 'rom/mapper/mapper_builder'
 
 module ROM
-  module Mapper
+  class Mapper
     # Mapper definition DSL used by Setup DSL
     #
     # @private
     class MapperDSL
-      attr_reader :registry, :mapper_classes, :mapper_classes
+      attr_reader :registry, :mapper_classes, :defined_mappers
 
       # @api private
       def initialize(registry, mapper_classes, block)

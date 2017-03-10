@@ -38,6 +38,18 @@ module Test
   end
 end
 
+ROM_CONFIGURATION = Class.new do
+  attr_reader :mapper_classes
+
+  def initialize
+    @mapper_classes = []
+  end
+
+  def register_mapper(mapper)
+    @mapper_classes << mapper
+  end
+end
+
 def T(*args)
   ROM::Processor::Transproc::Functions[*args]
 end

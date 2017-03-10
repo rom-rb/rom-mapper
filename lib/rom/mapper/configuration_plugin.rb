@@ -1,4 +1,4 @@
-require 'rom/mapper/mapper_dsl'
+require 'rom/mapper/mapper_configuration'
 
 module ROM
   class Mapper
@@ -11,9 +11,10 @@ module ROM
       # @private
 
       def self.apply(configuration, options = {})
-        configuration.class_eval do
+        configuration.class.class_eval do
           include MapperConfiguration
         end
+        configuration
       end
     end
   end
