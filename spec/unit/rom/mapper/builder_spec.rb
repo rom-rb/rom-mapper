@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe ROM::Mapper::MapperBuilder do
+RSpec.describe ROM::Mapper::Builder do
   subject(:mapper)do
-    ROM::Mapper::MapperBuilder.build_class(name, mapper_registry, options) do
+    ROM::Mapper::Builder.build_class(name, mapper_registry, options) do
       model name: 'User'
     end
   end

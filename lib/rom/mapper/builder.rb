@@ -5,7 +5,7 @@ module ROM
     # Setup DSL-specific mapper extensions
     #
     # @private
-    class MapperBuilder
+    class Builder
       # Generate a mapper subclass
       #
       # This is used by Setup#mappers DSL

@@ -1,4 +1,4 @@
-require 'rom/mapper/mapper_configuration'
+require 'rom/mapper/mapper_dsl'
 
 module ROM
   class Mapper
@@ -12,7 +12,9 @@ module ROM
 
       def self.apply(configuration, options = {})
         configuration.class.class_eval do
-          include MapperConfiguration
+          def mappers(&block)
+            register_mapper(*MapperDSL.new(self, mapper_classes, block).mapper_classes)
+          end
         end
         configuration
       end
