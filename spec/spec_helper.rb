@@ -38,18 +38,20 @@ module Test
   def self.remove_constants
     constants.each(&method(:remove_const))
   end
+
+  module Types
+    include Dry::Types.module
+  end
 end
 
-ROM_CONFIGURATION = Class.new do
-  attr_reader :mapper_classes
+Test::User = Class.new(Dry::Struct) do
+  attribute :name, Test::Types::String
+  attribute :email, Test::Types::String
+end
 
-  def initialize
-    @mapper_classes = []
-  end
-
-  def register_mapper(mapper)
-    @mapper_classes << mapper
-  end
+Test::Task = Class.new(Dry::Struct) do
+  attribute :name, Test::Types::String
+  attribute :title, Test::Types::String
 end
 
 def T(*args)
