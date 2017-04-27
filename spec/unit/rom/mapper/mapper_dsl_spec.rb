@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ROM::Mapper::MapperDSL do
   subject(:mapper_dsl) do
-    ROM::Mapper::MapperDSL.new(ROM_CONFIGURATION.new, [], block)
+    ROM::Mapper::MapperDSL.new(ROM::Configuration.new(:memory), [], block)
   end
 
   let(:block) do

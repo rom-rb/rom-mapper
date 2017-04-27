@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ROM::Mapper::ConfigurationPlugin do
   subject(:configuration) do
-    ROM::Mapper::ConfigurationPlugin.apply(ROM_CONFIGURATION.new)
+    ROM::Mapper::ConfigurationPlugin.apply(ROM::Configuration.new(:memory))
   end
 
   context "Interface" do
