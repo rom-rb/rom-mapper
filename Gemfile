@@ -18,6 +18,7 @@ end
 group :tools do
   gem 'rubocop', '~> 0.31'
 
+  gem 'faker'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-rubocop'

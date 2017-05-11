@@ -21,6 +21,16 @@ Resources:
 - [Guides](http://www.rubydoc.info/gems/rom-mapper/0.3.0/ROM/Mapper/AttributeDSL)
 - [Importing Data with ROM and Transproc](http://solnic.eu/2015/07/15/importing-data-with-rom-and-transproc.html)
 
+Contributing
+
+[Fork it](https://github.com/rom-rb/rom-mapper/fork)
+Create your feature branch (`git checkout -b my-new-feature`)
+Run the benchmark suite (`bin/benchmarks`)
+Commit your changes (`git commit -am 'Add some feature'`)
+Run the benchmark suite again for comparison (`bin/benchmarks`)
+Push to the branch (`git push origin my-new-feature`)
+Create a new Pull Request
+
 ## License
 
-See `LICENSE` file.
+See [LICENSE](blob/master/LICENSE) file.
