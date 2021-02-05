@@ -16,6 +16,8 @@ require "bundler"
 Bundler.setup
 
 require 'rom-mapper'
+require 'rom'
+require 'dry-struct'
 
 begin
   require 'byebug'
@@ -36,6 +38,20 @@ module Test
   def self.remove_constants
     constants.each(&method(:remove_const))
   end
+
+  module Types
+    include Dry::Types.module
+  end
+end
+
+Test::User = Class.new(Dry::Struct) do
+  attribute :name, Test::Types::String
+  attribute :email, Test::Types::String
+end
+
+Test::Task = Class.new(Dry::Struct) do
+  attribute :name, Test::Types::String
+  attribute :title, Test::Types::String
 end
 
 def T(*args)
